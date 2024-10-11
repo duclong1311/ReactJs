@@ -18,11 +18,12 @@ export function Register() {
     });
 
     const handleSubmit = async (values) => {
+        console.log("Form Values: ", values);  // Kiểm tra giá trị form
         try {
             let data = await baseAxios(METHOD_HTTP.POST, "/register", values);
             navigate("/login");
             console.log("Data", data);
-        } catch(e) {
+        } catch (e) {
             alert(e.message);
         }
     }

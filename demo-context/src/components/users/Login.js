@@ -15,9 +15,9 @@ export function Login(props) {
         setPasswordError('')
 
         try {
-            const data = await baseAxios(METHOD_HTTP.POST, "/login", values);
-            localStorage.setItem("token", data.token);
-            console.log("Data", data);
+            let data = await baseAxios(METHOD_HTTP.POST, "/login", values);
+            localStorage.setItem("token", data.token)
+            navigate("/home");
         } catch (e) {
             alert(e.message);
         }
