@@ -12,7 +12,6 @@ export function Login(props) {
 
     const onSubmit = async () => {
         let values = { username: username, password: password };
-        alert(values.username);
         setEmailError('')
         setPasswordError('')
 
