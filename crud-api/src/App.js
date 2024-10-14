@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Home } from "./components/Home";
 import { Edit } from "./components/Edit";
 import { Add } from "./components/Add";
@@ -9,10 +9,11 @@ function App() {
     <>
       <Routes>
         <Route path="home" element={<Home />} >
+          <Route path="list" element={<List />} />
           <Route path="add" element={<Add />} />
           <Route path="edit/:id" element={<Edit />} />
-          <Route path="list" element={<List />} />
         </Route>
+        <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
     </>
   );

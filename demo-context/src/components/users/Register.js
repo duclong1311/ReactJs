@@ -9,8 +9,7 @@ export function Register() {
     const navigate = useNavigate();
 
     const validation = Yup.object({
-        email: Yup.string()
-            .email("Email không hợp lệ")
+        username: Yup.string()
             .required("Vui lòng nhập Email"),
         password: Yup.string()
             .min(6, "Mật khẩu phải có ít nhất 6 ký tự")
@@ -42,15 +41,15 @@ export function Register() {
                     <br />
 
                     <div>
-                        <label className='inputLabel' htmlFor='email'>Email</label>
+                        <label className='inputLabel' htmlFor='username'>Email</label>
                         <Field
                             className='inputBox'
                             type='text'
-                            name='email'
-                            id='email'
+                            name='username'
+                            id='username'
                         />
-                        {errors.email && touched.email && (
-                            <div className='error'>{errors.email}</div>
+                        {errors.username && touched.username && (
+                            <div className='error'>{errors.username}</div>
                         )}
                     </div>
 
@@ -80,7 +79,7 @@ export function Register() {
         <>
             <Formik
                 initialValues={{
-                    email: '',
+                    username: '',
                     password: ''
                 }}
                 validationSchema={validation}

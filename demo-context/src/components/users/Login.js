@@ -3,44 +3,26 @@ import { Link, useNavigate } from 'react-router-dom';
 import baseAxios, { METHOD_HTTP } from "../../configs/baseAxios";
 
 export function Login(props) {
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
 
     const navigate = useNavigate();
 
-    const onSubmit = async (values) => {
+    const onSubmit = async () => {
+        let values = { username: username, password: password };
+        alert(values.username);
         setEmailError('')
         setPasswordError('')
 
         try {
             let data = await baseAxios(METHOD_HTTP.POST, "/login", values);
-            localStorage.setItem("token", data.token)
+            localStorage.setItem("token", data.token);
+            console.log("values", values);
             navigate("/home");
         } catch (e) {
             alert(e.message);
-        }
-        
-
-        if ('' === email) {
-            setEmailError('Please enter your email')
-            return
-        }
-
-        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-            setEmailError('Please enter a valid email')
-            return
-        }
-
-        if ('' === password) {
-            setPasswordError('Please enter a password')
-            return
-        }
-
-        if (password.length < 7) {
-            setPasswordError('The password must be 8 characters or longer')
-            return
         }
     }
 
@@ -53,11 +35,11 @@ export function Login(props) {
                 <br />
 
                 <div className="inputContainer">
-                    <label className="inputLabel" htmlFor="email">Email</label>
+                    <label className="inputLabel" htmlFor="username">Email</label>
                     <input 
                         type="text"
-                        value={email} 
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={username} 
+                        onChange={(e) => setUsername(e.target.value)}
                         className="inputBox"
                     />
                     <label className="errorLabel">{emailError}</label>
