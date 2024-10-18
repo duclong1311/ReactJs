@@ -18,7 +18,7 @@ export function Login(props) {
         try {
             let data = await baseAxios(METHOD_HTTP.POST, "/login", values);
             localStorage.setItem("token", data.token);
-            console.log("values", values);
+            console.log("values", values);  
             navigate("/home");
         } catch (e) {
             alert(e.message);
