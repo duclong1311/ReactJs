@@ -11,9 +11,9 @@ const rootReducer = (state = initialState, action) => {
             return { ...state, userlogined: action.payload };
         case FETCH_USER_SUCCESS:
             return { ...state, users: action.payload };
+        default:
+            return state;
     }
-
-    return state;
 };
 
 export default rootReducer;

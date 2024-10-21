@@ -5,8 +5,8 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const FETCH_USER = "FETCH_USER";
 export const FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS";
 
-export const fakeLogin = payload => {
-    return async dispatch => {
+export const fakeLogin = (payload) => {
+    return async (dispatch) => {
         const { username, password } = payload;
         if (username === "admin" && password === "123") {
             dispatch({
@@ -21,7 +21,7 @@ export const fakeLogin = payload => {
 };
 
 export const getUser = () => {
-    return async dispatch => {
+    return async (dispatch) => {
         const response = await axios.get(
             "https://jsonplaceholder.typicode.com/users"
         );
